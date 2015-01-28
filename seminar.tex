@@ -63,6 +63,7 @@
   \end{itemize}
   \item Faster server connections
   \item Faster switch interconnects
+\item But faster serial connections are complicate to realize \pause \\ $\rightarrow$ parrallelize connections (multi-lane)
 \end{itemize}
 \end{frame}
 
@@ -102,7 +103,7 @@ axis y line=left,
 \begin{itemize}
 \item Data endcoding and multi-lane distribution
 \item Lane deskwes
-\item Bit-level mutiplexing and toleration of skew variation
+\item Bit-level mutiplexing
 \item Physical Mediums
 \item Forward error correction
 \end{itemize}
@@ -134,7 +135,58 @@ axis y line=left,
 
 \end{frame}
 
+\begin{frame}{Deskew in the PCS}
+\begin{columns} % align columns
+\begin{column}{.6\textwidth}
+\includegraphics[height=0.95\textheight]{deskew.pdf}
+\end{column}
+\begin{column}{.4\textwidth}
+\begin{itemize}
+\item Skew is the time between earliest and lastes transition of the alignment marker sync bits
+\item After block sync wait for alignment markers in all lanes
+\item Wait for the buffer (FIFO) to fill up until dynamic skew is compensated
+\item Then lanes are deskewed
+\item Maximum Skew is 180ns (\textasciitilde 928bits) and maximum skew variation is 4ns (\textasciitilde 21bits)
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Deskew in the PCS}
+\begin{columns} % align columns
+\begin{column}{.6\textwidth}
+\includegraphics[height=0.95\textheight]{deskew2.pdf}
+\end{column}
+\begin{column}{.4\textwidth}
+\begin{itemize}
+\item Skew is the time between earliest and lastes transition of the alignment marker sync bits
+\item After block sync wait for alignment markers in all lanes
+\item Wait for the buffer (FIFO) to fill up until dynamic skew is compensated
+\item Then lanes are deskewed
+\item Maximum Skew is 180ns (\textasciitilde 928bits) and maximum skew variation is 4ns (\textasciitilde 21bits)
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
 \subsection{Physical Medium Attachment}
+\begin{frame}{Physical Medium Attachment}
+\begin{columns} % align columns
+\begin{column}{.4\textwidth}
+\includegraphics[height=0.95\textheight]{bitmux.pdf}
+\end{column}
+\begin{column}{.6\textwidth}
+\begin{itemize}
+\item Per input-lane clock and data recovery, when XLAUI/CAUI is used for connection	
+\item Bit-level multiplexing
+\begin{itemize}
+\item Input mux: 10:20 for 100G with CAUI interface
+\item Output mux: 20:4 for 100G-LR4
+\end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
 
 \subsection{Physical Medium Dependent sublayer}
 \subsection{Forward error correction}
